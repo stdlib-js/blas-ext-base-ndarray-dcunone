@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,18 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/blas-ext-base-dcunone' ).ndarray;
-
-
-// MAIN //
+import { float64ndarray, boolndarray } from '@stdlib/types/ndarray';
 
 /**
 * Cumulatively tests whether every element in a one-dimensional double-precision floating-point ndarray is falsy.
@@ -39,8 +32,8 @@ var strided = require( '@stdlib/blas-ext-base-dcunone' ).ndarray;
 *     -   a one-dimensional input ndarray.
 *     -   a one-dimensional output ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {Object} output ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
@@ -55,14 +48,9 @@ var strided = require( '@stdlib/blas-ext-base-dcunone' ).ndarray;
 * var bool = ( z === out );
 * // returns true
 */
-function dcunone( arrays ) {
-	var out = arrays[ 1 ];
-	var x = arrays[ 0 ];
-	strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( out ), getStride( out, 0 ), getOffset( out ) ); // eslint-disable-line max-len
-	return out;
-}
+declare function dcunone( arrays: [ float64ndarray, boolndarray ] ): boolndarray;
 
 
 // EXPORTS //
 
-module.exports = dcunone;
+export = dcunone;
